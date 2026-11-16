@@ -12,6 +12,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import com.wmods.wppenhacer.preference.ThemePreference
 import com.wmods.wppenhacer.xposed.core.WppCore
+import com.wmods.wppenhacer.xposed.utils.DesignUtils
 import com.wmods.wppenhacer.xposed.utils.YukiLog
 import java.io.File
 import java.io.FileInputStream
@@ -92,7 +93,7 @@ class WallpaperView(
                 return prefs.getString("wallpaper_file", "") ?: ""
             }
             return ThemePreference.rootDirectory.absolutePath + "/" + prefs.getString(
-                "folder_theme",
+                DesignUtils.themeSlotKey(prefs, "folder_theme"),
                 ""
             ) + "/" + properties.getProperty("wallpaper_file")
         }

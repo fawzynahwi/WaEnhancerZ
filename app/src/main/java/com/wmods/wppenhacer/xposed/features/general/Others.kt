@@ -31,6 +31,7 @@ import com.wmods.wppenhacer.xposed.features.listeners.ConversationItemListener
 import com.wmods.wppenhacer.xposed.utils.AnimationUtil
 import com.wmods.wppenhacer.xposed.utils.AudioOpusConverter
 import com.wmods.wppenhacer.xposed.utils.ReflectionUtils
+import com.wmods.wppenhacer.xposed.utils.DesignUtils
 import com.wmods.wppenhacer.xposed.utils.Utils
 import com.wmods.wppenhacer.xposed.utils.collapseAndHide
 import okhttp3.OkHttpClient
@@ -53,7 +54,7 @@ class Others(loader: ClassLoader, preferences: SharedPreferences) : Feature(load
         Collections.synchronizedMap(WeakHashMap<View, Boolean>())
 
     override fun doHook() {
-        properties = Utils.getProperties(xprefs, "custom_css", "custom_filters")
+        properties = Utils.getProperties(xprefs, DesignUtils.themeSlotKey(xprefs, "custom_css"), "custom_filters")
         val menuWIcons = xprefs.getBoolean("menuwicon", false)
         val newSettings = getNewSettingsVariant()
         val filterChats = xprefs.getString("chatfilter", "2")

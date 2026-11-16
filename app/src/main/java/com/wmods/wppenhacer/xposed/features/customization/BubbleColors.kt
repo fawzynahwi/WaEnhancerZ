@@ -17,7 +17,7 @@ class BubbleColors(loader: ClassLoader, preferences: SharedPreferences) :
     Feature(loader, preferences) {
 
     override fun doHook() {
-        val properties = Utils.getProperties(xprefs, "custom_css", "custom_filters")
+        val properties = Utils.getProperties(xprefs, DesignUtils.themeSlotKey(xprefs, "custom_css"), "custom_filters")
 
         val bubbleColor = xprefs.getBoolean("bubble_color", false)
 

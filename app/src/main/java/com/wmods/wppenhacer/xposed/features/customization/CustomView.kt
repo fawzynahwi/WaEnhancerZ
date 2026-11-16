@@ -42,6 +42,7 @@ import com.wmods.wppenhacer.xposed.core.Feature
 import com.wmods.wppenhacer.xposed.core.ViewHookDispatcher
 import com.wmods.wppenhacer.xposed.core.WppCore
 import com.wmods.wppenhacer.xposed.utils.ReflectionUtils
+import com.wmods.wppenhacer.xposed.utils.DesignUtils
 import com.wmods.wppenhacer.xposed.utils.Utils
 import com.wmods.wppenhacer.xposed.utils.YukiLog
 import cz.vutbr.web.css.CSSFactory
@@ -89,8 +90,10 @@ class CustomView(loader: ClassLoader, preferences: SharedPreferences) :
 
     override fun doHook() {
         val filterItens = xprefs.getString("css_theme", "") ?: ""
-        val folderTheme = xprefs.getString("folder_theme", "") ?: ""
-        val customCss = xprefs.getString("custom_css", "") ?: ""
+        val folderTheme =
+            xprefs.getString(DesignUtils.themeSlotKey(xprefs, "folder_theme"), "") ?: ""
+        val customCss =
+            xprefs.getString(DesignUtils.themeSlotKey(xprefs, "custom_css"), "") ?: ""
 
         if ((TextUtils.isEmpty(filterItens) && TextUtils.isEmpty(folderTheme) && TextUtils.isEmpty(
                 customCss
@@ -98,7 +101,7 @@ class CustomView(loader: ClassLoader, preferences: SharedPreferences) :
             || !xprefs.getBoolean("custom_filters", true)
         ) return
 
-        properties = Utils.getProperties(xprefs, "custom_css", "custom_filters")
+        properties = Utils.getProperties(xprefs, DesignUtils.themeSlotKey(xprefs, "custom_css"), "custom_filters")
 
         WppCore.addListenerActivity { activity1, type ->
             if (type != WppCore.ActivityChangeState.ChangeType.CREATED) return@addListenerActivity

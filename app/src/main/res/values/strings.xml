@@ -337,6 +337,10 @@
     <string name="license_desc">This project is licensed under the GNU License - see the LICENSE file for details.\n\nNote: Please use Wa Enhancer responsibly and in compliance with the terms and conditions of the apps you are modifying. Misuse of this tool may lead to legal consequences.</string>
     <string name="select_a_color">Select a color</string>
     <string name="custom_appearance">Custom Appearance</string>
+    <string name="theme_split">Separate light/dark themes</string>
+    <string name="theme_split_sum">Use one theme in light mode and another in dark mode. Restart WhatsApp after the mode changes.</string>
+    <string name="theme_light_title">Light mode theme</string>
+    <string name="theme_dark_title">Dark mode theme</string>
     <string name="custom_filters_sum">Activate filters by ID and Custom CSS</string>
     <string name="click_times">Click 5 times on the WhatsApp title</string>
     <string name="hold_title">Hold on WhatsApp title</string>

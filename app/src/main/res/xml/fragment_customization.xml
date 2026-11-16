@@ -121,6 +121,24 @@
             android:summary="@string/manage_theme_sum"
             android:title="@string/theme_manager" />
 
+        <rikka.material.preference.MaterialSwitchPreference
+            app:dependency="custom_filters"
+            app:key="theme_split"
+            app:summary="@string/theme_split_sum"
+            app:title="@string/theme_split" />
+
+        <com.wmods.wppenhacer.preference.ThemePreference
+            android:key="folder_theme_light"
+            app:dependency="theme_split"
+            android:summary="@string/manage_theme_sum"
+            android:title="@string/theme_light_title" />
+
+        <com.wmods.wppenhacer.preference.ThemePreference
+            android:key="folder_theme_dark"
+            app:dependency="theme_split"
+            android:summary="@string/manage_theme_sum"
+            android:title="@string/theme_dark_title" />
+
         <ListPreference
             android:entries="@array/animations_names"
             app:defaultValue="default"

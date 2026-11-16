@@ -210,6 +210,17 @@ object DesignUtils {
         return null
     }
 
+    /**
+     * Picks the theme "slot" key for the current mode. With "Separate light/dark themes" on,
+     * e.g. "custom_css" becomes "custom_css_dark" in dark mode and "custom_css_light" in light
+     * mode. With it off, the normal key is returned unchanged.
+     */
+    @JvmStatic
+    fun themeSlotKey(prefs: SharedPreferences, baseKey: String): String {
+        if (!prefs.getBoolean("theme_split", false)) return baseKey
+        return if (isNightMode()) "${baseKey}_dark" else "${baseKey}_light"
+    }
+
     @JvmStatic
     fun isNightMode(): Boolean {
         return if (WppCore.getDefaultTheme() <= 0) isNightModeBySystem() else WppCore.getDefaultTheme() == 2

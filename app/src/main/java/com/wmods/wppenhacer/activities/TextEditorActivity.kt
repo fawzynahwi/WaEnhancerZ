@@ -178,7 +178,7 @@ class TextEditorActivity : BaseActivity() {
                                 PreferenceManager.getDefaultSharedPreferences(this@TextEditorActivity)
                             val key = intent.getStringExtra("key")
                             if (key != null && prefs.getString(key, "") == targetFolder) {
-                                prefs.edit().putString("custom_css", code).apply()
+                                prefs.edit().putString(ThemePreference.cssKeyFor(key), code).apply()
                             }
 
                             withContext(Dispatchers.Main) {

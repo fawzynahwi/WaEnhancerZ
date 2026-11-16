@@ -120,7 +120,7 @@ class CustomThemeV2(loader: ClassLoader, preferences: SharedPreferences) :
 
     @Throws(Throwable::class)
     override fun doHook() {
-        properties = Utils.getProperties(xprefs, "custom_css", "custom_filters")
+        properties = Utils.getProperties(xprefs, DesignUtils.themeSlotKey(xprefs, "custom_css"), "custom_filters")
         hookTheme()
         hookWallpaper()
         ReflectionUtils.findClass("android.app.ActivityThread", classLoader).resolve().method {

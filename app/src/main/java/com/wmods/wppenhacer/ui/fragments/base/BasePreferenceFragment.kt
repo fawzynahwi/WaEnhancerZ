@@ -228,6 +228,7 @@ abstract class BasePreferenceFragment : PreferenceFragmentCompat(),
             changeColorEnabled && monetAvailable && Objects.equals(changeColorMode, "monet")
 
         setPreferenceState("changecolor_mode", changeColorEnabled && monetAvailable)
+        setPreferenceState("folder_theme", !prefs.getBoolean("theme_split", false))
         setPreferenceState("primary_color", changeColorEnabled && !useMonetColors)
         setPreferenceState("background_color", changeColorEnabled && !useMonetColors)
         setPreferenceState("text_color", changeColorEnabled && !useMonetColors)

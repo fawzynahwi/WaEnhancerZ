@@ -108,7 +108,7 @@ class ThemePreference(context: Context, attrs: AttributeSet?) : Preference(conte
                 preferences.edit(commit = true) { putString(key, folder) }
                 preferences.edit(commit = true) {
                     putString(
-                        "custom_css",
+                        cssKeyFor(key),
                         if (cssFile.exists()) cssFile.readText(Charset.defaultCharset()) else ""
                     )
                 }
@@ -235,5 +235,9 @@ class ThemePreference(context: Context, attrs: AttributeSet?) : Preference(conte
     companion object {
         @JvmField
         val rootDirectory = File(App.waEnhancerFolder, "themes")
+
+        /** "folder_theme" -> "custom_css", "folder_theme_dark" -> "custom_css_dark", ... */
+        @JvmStatic
+        fun cssKeyFor(folderKey: String): String = "custom_css" + folderKey.removePrefix("folder_theme")
     }
 }
